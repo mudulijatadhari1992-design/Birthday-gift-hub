@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Mission: Accessing...</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        #terminal {
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .loading-frame { color: #ffcc00; font-weight: bold; font-size: 1.2rem; }
+        
+        .rain-line {
+            font-size: 0.8rem;
+            white-space: nowrap;
+            margin: 2px 0;
+            animation: fadeIn 0.1s forwards;
+        }
+
+        .reveal-box {
+            display: none;
+            border: 2px solid #ff0055;
+            padding: 20px;
+            background: rgba(255, 0, 85, 0.1);
+            box-shadow: 0 0 20px #ff0055;
+            border-radius: 10px;
+            animation: zoomIn 0.5s ease-out;
+        }
+
+        h1 { color: #ff0055; text-shadow: 0 0 10px #ff0055; }
+        .quote { color: #00d4ff; font-style: italic; }
+        .masti { color: #ffcc00; margin-top: 20px; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes zoomIn { from { transform: scale(0.5); } to { transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+    <div id="terminal">
+        <div id="output"></div>
+    </div>
+
+    <div id="reveal" class="reveal-box">
+        <h1>🔥 HAPPY BIRTHDAY, LEGEND! 🔥</h1>
+        <p>Tu koi normal configuration of atoms nahi hai...</p>
+        <p style="color: #00ff00; font-weight: bold;">Tu ek 'GLITCH IN THE MATRIX' hai! 🧬✨</p>
+        <p class="quote">"Koshish karne walon ki kabhi haar nahi hoti!" ⚔️</p>
+        <hr style="border: 1px solid #ff0055;">
+        <p>🍥 BELIEVE IT! | 🔭 DISCOVER IT! | 🧠 CRACK IT!</p>
+        <div class="masti" id="masti-output"></div>
+    </div>
+
+    <script>
+        const output = document.getElementById('output');
+        const reveal = document.getElementById('reveal');
+        const mastiOutput = document.getElementById('masti-output');
+
+        const delay = (ms) => new Promise(res => setTimeout(res, ms));
+
+        async function startMission() {
+            // Phase 1: Intro
+            output.innerHTML += `<p>>>> ACCESSING THE ARCHITECT'S SERVER...</p>`;
+            await delay(1000);
+            output.innerHTML += `<p>>>> SUBJECT: A VERY SPECIAL HUMAN BEING.</p>`;
+            await delay(1000);
+
+            // Phase 2: Anime Loading
+            const frames = ["(◣_◢)", "( •_•)", "( •_•)>⌐■-■", "(⌐■_■)"];
+            output.innerHTML += `<p class="loading-frame">[!] DETECTING POTENTIAL HOKAGE LEVEL ENERGY...</p>`;
+            let loader = document.createElement('p');
+            output.appendChild(loader);
+            
+            for(let i=0; i<3; i++) {
+                for(let f of frames) {
+                    loader.innerText = `Scanning Soul: ${f}`;
+                    await delay(250);
+                }
+            }
+
+            // Phase 3: Cosmic Rain
+            output.innerHTML = `<p style="color: #ff00ff">--- ANALYZING MOTIVATIONAL FREQUENCY ---</p>`;
+            const icons = ["⚡", "🔥", "⚛️", "🧠", "🌌", "🧬", "👊", "🍥"];
+            const quotes = ["NEVER GIVE UP!", "BELIEVE IT!", "SHINZO WO SASAGEYO!", "TATAKAE!", "LIMIT BREAK!"];
+
+            for(let i=0; i<50; i++) {
+                let line = document.createElement('div');
+                line.className = 'rain-line';
+                line.style.color = i % 2 === 0 ? '#ffcc00' : '#00d4ff';
+                line.innerText = `${icons[Math.floor(Math.random()*icons.length)]} ${quotes[Math.floor(Math.random()*quotes.length)]} ${icons[Math.floor(Math.random()*icons.length)]}`;
+                output.appendChild(line);
+                window.scrollTo(0, document.body.scrollHeight);
+                await delay(50);
+            }
+
+            await delay(1000);
+            output.style.display = 'none';
+            reveal.style.display = 'block';
+
+            // Phase 4: Bachkani Masti
+            const messages = [
+                "Checking for Party-Vibe Error...",
+                "Error 404: Cake Not Found in Code! 🎂",
+                "Warning: If no party, I will delete your browser history! 😂"
+            ];
+
+            for(let m of messages) {
+                let p = document.createElement('p');
+                p.innerText = m;
+                mastiOutput.appendChild(p);
+                await delay(1500);
+            }
+        }
+
+        startMission();
+    </script>
+</body>
+</html>
